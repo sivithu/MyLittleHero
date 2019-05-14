@@ -37,6 +37,7 @@ public class ChooseWeaponActivity extends AppCompatActivity {
   public String sexe = "NaN";
   public String birthDay = "NaN";
   public String image = "NaN";
+  public String image_name;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -46,9 +47,9 @@ public class ChooseWeaponActivity extends AppCompatActivity {
     initRecyclerView();
     loadData();
     Intent intent = getIntent();
-    name = intent.getStringExtra("name");
-    sexe = intent.getStringExtra("sexe");
-    birthDay = intent.getStringExtra("birthday");
+    name = intent.getStringExtra("name").toString();
+    sexe = intent.getStringExtra("sexe").toString();
+    birthDay = intent.getStringExtra("birthday").toString();
 
     System.out.println(birthDay);
   }
@@ -64,6 +65,7 @@ public class ChooseWeaponActivity extends AppCompatActivity {
           Toast.makeText(ChooseWeaponActivity.this, weapon.getName(), Toast.LENGTH_SHORT).show();
           Glide.with(ChooseWeaponActivity.this).load(weapon.getPictureUrl()).into(imageChoosen);
           image = weapon.getPictureUrl();
+          image_name = weapon.getName();
         }
       });
     }
@@ -96,10 +98,11 @@ public class ChooseWeaponActivity extends AppCompatActivity {
   @OnClick(R.id.activity_next_btn) void onNextButtonClick() {
 
     Intent intent = new Intent(ChooseWeaponActivity.this, RecapActivity.class);
-    intent.putExtra("name", ""+name);
-    intent.putExtra("gender", ""+sexe);
-    intent.putExtra("birthday", ""+birthDay);
-    intent.putExtra("image", ""+image);
+    intent.putExtra("name", name);
+    intent.putExtra("gender", sexe);
+    intent.putExtra("birthday", birthDay);
+    intent.putExtra("image", image);
+    intent.putExtra("image_name", image_name);
     startActivity(intent);
     onPause();
   }

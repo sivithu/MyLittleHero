@@ -23,11 +23,14 @@ public class RecapActivity extends AppCompatActivity {
     TextView genderText;
     @BindView(R.id.birthday_name_value)
     TextView birthdayText;
+    @BindView(R.id.imageTitle)
+    TextView imageTitle;
 
     public String name = "NaN";
     public String sexe = "NaN";
     public String birthDay = "NaN";
     public String image = "NaN";
+    public String image_title = "NaN";
 
 
     @Override
@@ -41,11 +44,14 @@ public class RecapActivity extends AppCompatActivity {
         sexe = intent.getStringExtra("gender");
         birthDay = intent.getStringExtra("birthday");
         image = intent.getStringExtra("image");
+        image_title = intent.getStringExtra("image_name");
 
         Glide.with(RecapActivity.this).load(image).into(recapImage);
         pseudoText.setText(name);
         genderText.setText(sexe);
         birthdayText.setText(birthDay);
+        imageTitle.setText(image_title);
+
 
     }
 }

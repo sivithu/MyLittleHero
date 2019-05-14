@@ -36,9 +36,9 @@ public class CreatePlayerActivity extends AppCompatActivity {
 
     genderGr.setOnCheckedChangeListener((group, checkedId) -> {
       if (checkedId == R.id.activity_create_player_radio_button_male) {
-        sexe = "male";
+        sexe = "Male";
       } else {
-        sexe = "female";
+        sexe = "Female";
       }
     });
   }
